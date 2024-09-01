@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Registro de Fichaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        background-color: #f7f7f7;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        width: 400px;
+        text-align: left;
+      }
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #006d39;
+      }
+      label {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: block;
+      }
+      select, input[type="submit"] {
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        font-weight: 700;
+        background-color: #006d39;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #005a2d;
+      }
+      #clock {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color: #006d39;
+      }
+      .response {
+        font-size: 18px;
+        font-weight: 600;
+        color: #006d39;
+        text-align: center;
+        margin-top: 20px;
+      }
+      footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Registro de Fichaje</h1>
+
+      <!-- Reloj en tiempo real -->
+      <div id="clock"></div>
+
+      <form id="fichajeForm" action="https://script.google.com/macros/s/AKfycbxaOz-PnafUaadZvaFIZ-v3hkUq5L8YnNaz5Zg87u0FMlYsBRit4nvClV0CgIgktd2LZg/exec" method="post" onsubmit="handleSubmit(event)">
+        <label for="usuario">Selecciona tu nombre:</label>
+        <select id="usuario" name="usuario" required>
+          <option value="ALBARRÁN PLANELLES, FRANCISCA">ALBARRÁN PLANELLES, FRANCISCA</option>
+          <option value="ARGOTE MARTÍN, JUAN ALBERTO">ARGOTE MARTÍN, JUAN ALBERTO</option>
+          <option value="ÁVILA GONZÁLEZ, GABRIELA MARÍA">ÁVILA GONZÁLEZ, GABRIELA MARÍA</option>
+          <option value="BELTRÁN FERNÁNDEZ, MARÍA ÁNGELES">BELTRÁN FERNÁNDEZ, MARÍA ÁNGELES</option>
+          <option value="CARMONA LÓPEZ, INMACULADA">CARMONA LÓPEZ, INMACULADA</option>
+          <option value="CARMONA MAQUEDA, JOSÉ LUIS">CARMONA MAQUEDA, JOSÉ LUIS</option>
+          <option value="CHAMIZO MORENO, MARTÍN LUIS">CHAMIZO MORENO, MARTÍN LUIS</option>
+          <option value="CORES VÁZQUEZ, JAIME">CORES VÁZQUEZ, JAIME</option>
+          <option value="DOMÍNGUEZ LÓPEZ, ERNESTO">DOMÍNGUEZ LÓPEZ, ERNESTO</option>
+          <option value="GALLARDO QUERO, MARÍA ESTER">GALLARDO QUERO, MARÍA ESTER</option>
+          <option value="GALLEGO GARCÍA, MARÍA DEL MAR">GALLEGO GARCÍA, MARÍA DEL MAR</option>
+          <option value="IZQUIERDO VARGAS, JUAN FRANCISCO">IZQUIERDO VARGAS, JUAN FRANCISCO</option>
+          <option value="MARTÍN BAUTISTA, MARÍA TERESA">MARTÍN BAUTISTA, MARÍA TERESA</option>
+          <option value="MARTÍN MANCERA, SILVIA">MARTÍN MANCERA, SILVIA</option>
+          <option value="MARTÍN VICENTE, LAURA FABIOLA">MARTÍN VICENTE, LAURA FABIOLA</option>
+          <option value="MARTÍNEZ URDA, FRANCISCO JAVIER">MARTÍNEZ URDA, FRANCISCO JAVIER</option>
+          <option value="MATA IGLESIAS, JOSÉ ANTONIO">MATA IGLESIAS, JOSÉ ANTONIO</option>
+          <option value="MOLINA GUTIÉRREZ, MARÍA ÁNGELES">MOLINA GUTIÉRREZ, MARÍA ÁNGELES</option>
+          <option value="MORALES LUQUE, NARCISO">MORALES LUQUE, NARCISO</option>
+          <option value="MORENO GARCÍA, MARÍA ELISA">MORENO GARCÍA, MARÍA ELISA</option>
+          <option value="MORENO ROMERO, EVA">MORENO ROMERO, EVA</option>
+          <option value="OLMEDO NARBONA, ANTONIO">OLMEDO NARBONA, ANTONIO</option>
+          <option value="PARRA MORENO, ROSA MARÍA">PARRA MORENO, ROSA MARÍA</option>
+          <option value="QUIJANO RAMOS, DANIEL">QUIJANO RAMOS, DANIEL</option>
+          <option value="RUIZ ENRÍQUEZ, JAVIER MARÍA">RUIZ ENRÍQUEZ, JAVIER MARÍA</option>
+          <option value="VERA ESTRADA, FRANCISCO">VERA ESTRADA, FRANCISCO</option>
+        </select><br><br>
+
+        <label for="turno">Selecciona tu turno:</label>
+        <select id="turno" name="turno" required>
+          <option value="Mañana Entrada">Mañana Entrada</option>
+          <option value="Mañana Salida">Mañana Salida</option>
+          <option value="Tarde Entrada">Tarde Entrada</option>
+          <option value="Tarde Salida">Tarde Salida</option>
+        </select><br><br>
+
+        <input type="submit" value="Fichar">
+      </form>
+      <div id="respuesta" class="response"></div>
+    </div>
+
+    <footer>
+      <p>Centro del Profesorado de Málaga</p>
+    </footer>
+
+    <script>
+      // Función para actualizar el reloj
+      function updateClock() {
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Enero es 0
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const dateString = `${day}/${month}/${year}`;
+        const timeString = `${hours}:${minutes}:${seconds}`;
+
+        document.getElementById('clock').innerText = `${dateString} ${timeString}`;
+      }
+
+      // Actualiza el reloj cada segundo
+      setInterval(updateClock, 1000);
+
+      // Llama a la función para actualizar el reloj inmediatamente al cargar la página
+      updateClock();
+
+      function handleSubmit(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+
+        const form = document.getElementById('fichajeForm');
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('respuesta').innerText = data;
+          form.reset(); // Resetea el formulario después de enviarlo
+          setTimeout(() => {
+            document.getElementById('respuesta').innerText = '';
+          }, 5000); // Oculta la respuesta después de 5 segundos
+        })
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+  </body>
+</html>
+

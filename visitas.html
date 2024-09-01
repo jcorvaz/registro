@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Visitas - Junta de Andalucía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #006d39;
+        }
+        label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select, textarea {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"] {
+            font-weight: 700;
+            background-color: #006d39;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #005a2d;
+        }
+        #clock {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #006d39;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+        #visitaFields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Visitas</h1>
+
+        <!-- Reloj en tiempo real -->
+        <div id="clock"></div>
+
+        <form id="visitasForm" action="https://script.google.com/macros/s/AKfycbyjTh_UfVHTGjKf-JOwjJiOsYKRWGcrdBPCiFF8g-MKu3qjH5Aubv-3K8_7afzFmaVHOw/exec" method="post">
+            
+            <label for="asesoria">ASESORÍA</label>
+            <select id="asesoria" name="asesoria" required>
+                <option value="ALBARRÁN PLANELLES, FRANCISCA">ALBARRÁN PLANELLES, FRANCISCA</option>
+                <option value="ARGOTE MARTÍN, JUAN ALBERTO">ARGOTE MARTÍN, JUAN ALBERTO</option>
+                <option value="ÁVILA GONZÁLEZ, GABRIELA MARÍA">ÁVILA GONZÁLEZ, GABRIELA MARÍA</option>
+                <!-- Más opciones según tus necesidades -->
+            </select>
+
+            <label for="visita">¿En la próxima semana tienes programada alguna visita?</label>
+            <select id="visita" name="visita" required onchange="toggleVisitaFields()">
+                <option value="No">No</option>
+                <option value="Sí">Sí</option>
+            </select>
+
+            <div id="visitaFields">
+                <label for="dia">Día</label>
+                <input type="date" id="dia" name="dia">
+
+                <label for="hora_inicio">Hora del inicio de la visita:</label>
+                <input type="time" id="hora_inicio" name="hora_inicio">
+
+                <label for="hora_fin">Hora de finalización de la visita:</label>
+                <input type="time" id="hora_fin" name="hora_fin">
+
+                <label for="horario_laboral">¿LA VISITA ESTÁ CONTEMPLADA DENTRO DE SU HORARIO LABORAL?</label>
+                <select id="horario_laboral" name="horario_laboral">
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="tipo_visita">TIPO DE VISITA</label>
+                <select id="tipo_visita" name="tipo_visita">
+                    <option value="ACCIÓN FORMATIVA">ACCIÓN FORMATIVA</option>
+                    <option value="VISITA A CENTRO">VISITA A CENTRO</option>
+                    <option value="OTRO">OTRO</option>
+                </select>
+
+                <label for="codigo_centro">CÓDIGO DE CENTRO <small>(Esta pregunta se cumplimenta si en la pregunta anterior ha señalado "VISITA A CENTRO")</small></label>
+                <input list="centros" id="codigo_centro" name="codigo_centro">
+                <datalist id="centros">
+                    <option value="29003695 | C.E.I.P. Ntra. Sra. de Gracia | Málaga | Albarrán Planelles, Francisca">
+                    <option value="29602438 | C.E.I.P. Lex Flavia Malacitana | Málaga | Albarrán Planelles, Francisca">
+                    <option value="29003701 | C.E.I.P. Miguel de Cervantes | Málaga | Albarrán Planelles, Francisca">
+                    <!-- Agrega aquí el resto de los centros -->
+                </datalist>
+
+                <label for="lugar_visita">LUGAR DE LA VISITA</label>
+                <select id="lugar_visita" name="lugar_visita">
+                    <option value="SALA DE VIDEOCONFERENCIAS (AVFP, CIRCUIT, WEBEX, MEET...)">SALA DE VIDEOCONFERENCIAS (AVFP, CIRCUIT, WEBEX, MEET...)</option>
+                    <option value="DELEGACIÓN TERRITORIAL">DELEGACIÓN TERRITORIAL</option>
+                    <option value="SERVICIOS CENTRALES">SERVICIOS CENTRALES</option>
+                    <option value="UMA">UMA</option>
+                    <option value="I.E.S">I.E.S</option>
+                    <option value="C.E.I.P.">C.E.I.P.</option>
+                    <option value="ESCUELA INFANTIL">ESCUELA INFANTIL</option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                <label for="personas_entrevistadas">Personas entrevistadas en la visita</label>
+                <select id="personas_entrevistadas" name="personas_entrevistadas" multiple>
+                    <option value="Director/a">Director/a</option>
+                    <option value="Jefe de estudios">Jefe de estudios</option>
+                    <option value="Secretario/a">Secretario/a</option>
+                    <!-- Más opciones según tus necesidades -->
+                </select>
+
+                <label for="asuntos_tratados">Asuntos tratados en la visita:</label>
+                <select id="asuntos_tratados" name="asuntos_tratados" multiple>
+                    <option value="Requerimiento del propio centro educativo">Requerimiento del propio centro educativo</option>
+                    <option value="Recoger documentación">Recoger documentación</option>
+                    <!-- Más opciones según tus necesidades -->
+                </select>
+
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" name="observaciones" rows="4"></textarea>
+            </div>
+
+            <input type="submit" value="Enviar formulario">
+        </form>
+
+        <div id="respuesta" class="response"></div>
+    </div>
+
+    <footer>
+        <p>Centro del Profesorado de Málaga</p>
+    </footer>
+
+    <script>
+        // Función para actualizar el reloj
+        function updateClock() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Enero es 0
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const dateString = `${day}/${month}/${year}`;
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            document.getElementById('clock').innerText = `${dateString} ${timeString}`;
+        }
+
+        // Actualiza el reloj cada segundo
+        setInterval(updateClock, 1000);
+
+        // Llama a la función para actualizar el reloj inmediatamente al cargar la página
+        updateClock();
+
+        // Mostrar u ocultar campos de visita según la selección
+        function toggleVisitaFields() {
+            const visitaValue = document.getElementById('visita').value;
+            const visitaFields = document.getElementById('visitaFields');
+
+            if (visitaValue === 'Sí') {
+                visitaFields.style.display = 'block';
+            } else {
+                visitaFields.style.display = 'none';
+                document.getElementById('visitasForm').submit();
+            }
+        }
+
+    </script>
+</body>
+</html>
+

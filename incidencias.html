@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportar Incidencia</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .incidencia-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input[type=date],
+        select,
+        input[type=text] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type=submit] {
+            padding: 10px;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #3f51b5;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #5c6bc0;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="incidencia-container">
+        <h2>Reportar Incidencia</h2>
+        <form action="https://script.google.com/macros/s/AKfycbya1Aj--_cI_Xf7h6wkERNu375lGGQpioGxCJUGlM1eRf3lJPRfM1rkyVfGs2HKiFVF/exec" method="post">
+            <label for="fecha">Día:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            
+            <label for="tipo_marcaje">Marcaje:</label>
+            <select id="tipo_marcaje" name="tipo_marcaje" required>
+                <option value="Mañana Entrada">Mañana Entrada</option>
+                <option value="Mañana Salida">Mañana Salida</option>
+                <option value="Tarde Entrada">Tarde Entrada</option>
+                <option value="Tarde Salida">Tarde Salida</option>
+            </select>
+            
+            <label for="razon">Razón:</label>
+            <select id="razon" name="razon" required>
+                <option value="Tráfico Intenso">Tráfico Intenso</option>
+                <option value="Urgencia Médica">Urgencia Médica</option>
+                <option value="Olvido en el Marcaje">Olvido en el Marcaje</option>
+                <option value="Fallo del Sistema">Fallo del Sistema</option>
+                <option value="Cambio de Tarde">Cambio de Tarde</option>
+                <option value="Otros">Otros</option>
+            </select>
+            
+            <label for="asesoria">Asesoría:</label>
+            <select id="asesoria" name="asesoria" required>
+                <option value="ALBARRÁN PLANELLES, FRANCISCA">ALBARRÁN PLANELLES, FRANCISCA</option>
+                <option value="ARGOTE MARTÍN, JUAN ALBERTO">ARGOTE MARTÍN, JUAN ALBERTO</option>
+                <option value="ÁVILA GONZÁLEZ, GABRIELA MARÍA">ÁVILA GONZÁLEZ, GABRIELA MARÍA</option>
+                <option value="BELTRÁN FERNÁNDEZ, MARÍA ÁNGELES">BELTRÁN FERNÁNDEZ, MARÍA ÁNGELES</option>
+                <option value="CARMONA LÓPEZ, INMACULADA">CARMONA LÓPEZ, INMACULADA</option>
+                <option value="CARMONA MAQUEDA, JOSÉ LUIS">CARMONA MAQUEDA, JOSÉ LUIS</option>
+                <option value="CHAMIZO MORENO, MARTÍN LUIS">CHAMIZO MORENO, MARTÍN LUIS</option>
+                <option value="CORES VÁZQUEZ, JAIME">CORES VÁZQUEZ, JAIME</option>
+                <option value="DOMÍNGUEZ LÓPEZ, ERNESTO">DOMÍNGUEZ LÓPEZ, ERNESTO</option>
+                <option value="GALLARDO QUERO, MARÍA ESTER">GALLARDO QUERO, MARÍA ESTER</option>
+                <option value="GALLEGO GARCÍA, MARÍA DEL MAR">GALLEGO GARCÍA, MARÍA DEL MAR</option>
+                <option value="IZQUIERDO VARGAS, JUAN FRANCISCO">IZQUIERDO VARGAS, JUAN FRANCISCO</option>
+                <option value="MARTÍN BAUTISTA, MARÍA TERESA">MARTÍN BAUTISTA, MARÍA TERESA</option>
+                <option value="MARTÍN MANCERA, SILVIA">MARTÍN MANCERA, SILVIA</option>
+                <option value="MARTÍN VICENTE, LAURA FABIOLA">MARTÍN VICENTE, LAURA FABIOLA</option>
+                <option value="MARTÍNEZ URDA, FRANCISCO JAVIER">MARTÍNEZ URDA, FRANCISCO JAVIER</option>
+                <option value="MATA IGLESIAS, JOSÉ ANTONIO">MATA IGLESIAS, JOSÉ ANTONIO</option>
+                <option value="MOLINA GUTIÉRREZ, MARÍA ÁNGELES">MOLINA GUTIÉRREZ, MARÍA ÁNGELES</option>
+                <option value="MORALES LUQUE, NARCISO">MORALES LUQUE, NARCISO</option>
+                <option value="MORENO GARCÍA, MARÍA ELISA">MORENO GARCÍA, MARÍA ELISA</option>
+                <option value="MORENO ROMERO, EVA">MORENO ROMERO, EVA</option>
+                <option value="OLMEDO NARBONA, ANTONIO">OLMEDO NARBONA, ANTONIO</option>
+                <option value="PARRA MORENO, ROSA MARÍA">PARRA MORENO, ROSA MARÍA</option>
+                <option value="QUIJANO RAMOS, DANIEL">QUIJANO RAMOS, DANIEL</option>
+                <option value="RUIZ ENRÍQUEZ, JAVIER MARÍA">RUIZ ENRÍQUEZ, JAVIER MARÍA</option>
+                <option value="VERA ESTRADA, FRANCISCO">VERA ESTRADA, FRANCISCO</option>
+            </select>
+            
+            <label for="especificacion">Especifique:</label>
+            <input type="text" id="especificacion" name="especificacion">
+            
+            <input type="submit" value="Reportar Incidencia">
+        </form>
+        <a href="{{ url_for('registro_horario') }}">Volver al Registro de Horario</a>
+    </div>
+</body>
+</html>
+
