@@ -32,7 +32,13 @@
             font-size: 28px;
             font-weight: 700;
             color: #006d39;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+        }
+        #clock {
+            font-size: 14px; /* Tamaño de fuente reducido */
+            font-weight: 400; /* Peso de fuente reducido */
+            margin-bottom: 20px;
+            color: #006d39;
         }
         a {
             display: block;
@@ -61,6 +67,10 @@
 <body>
     <div class="container">
         <h1>Centro del Profesorado de Málaga</h1>
+        
+        <!-- Reloj en tiempo real -->
+        <div id="clock"></div>
+
         <a href="registro_horario.html">Registro de Fichaje</a>
         <a href="visitas.html">Formulario de Visitas</a>
         <a href="incidencias.html">Reportar Incidencia</a>
@@ -68,6 +78,30 @@
     <footer>
         <p>&copy; 2024 Centro del Profesorado de Málaga. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Función para actualizar el reloj
+        function updateClock() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Enero es 0
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const dateString = `${day}/${month}/${year}`;
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            document.getElementById('clock').innerText = `${dateString} ${timeString}`;
+        }
+
+        // Actualiza el reloj cada segundo
+        setInterval(updateClock, 1000);
+
+        // Llama a la función para actualizar el reloj inmediatamente al cargar la página
+        updateClock();
+    </script>
 </body>
 </html>
 
